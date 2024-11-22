@@ -25,7 +25,7 @@ import https from 'https';
     });
   }));
 
-  // 正常なレスポンス
+  // レスポンスの表示
   console.log(response);
 
 })();
