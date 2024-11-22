@@ -52,3 +52,4 @@ https://trueno-kktg.digital.go.jp/ から、[ログイン]ボタンを押して�
 ## サンプルコード
 
 - [node.js](./samples/nodejs/)
+- [python3](./samples/python3/)
