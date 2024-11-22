@@ -1,0 +1,23 @@
+import requests
+
+version = "v1"
+method = "simple" # or detail
+kanji="日本　太郎"
+kana="ニホン　タロウ"
+key="(api key)"
+
+url = f"https://api.trueno-kktg.digital.go.jp/{version}/{method}"
+
+params = {
+  'kanji': kanji,
+  'kana': kana,
+  'key': key,
+}
+
+response = requests.get(url, params=params)
+
+# レスポンスのステータスコードを確認
+print(response.status_code)  # 200
+
+# レスポンスのコンテンツを表示
+print(response.text)
