@@ -74,7 +74,7 @@ import VueLoading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 const kanji=ref('日本［東京］　花子')
 const kana=ref('トウキョウ　ハナコ')
-const apikey=ref("please_input_api_key")
+const apikey=ref("uHsoQnx7E823F24qk6V63SIWHwmVMG2s")
 const apiurl=ref("https://api.trueno-kktg.digital.go.jp/v1/")
 const detail=ref(true)
 const result=ref('')
