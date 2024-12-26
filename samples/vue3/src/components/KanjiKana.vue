@@ -53,12 +53,13 @@
         </div>
 
         <div class="grid gap-6 mb-6 md:grid-cols-2">
-
-        <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">結果</label>
-        <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" />{{  result  }}
-
+            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">結果</label>
+            <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >{{  result  }}</div>
         </div>
-
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">レスポンス</label>
+            <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >{{  response  }}</div>
+        </div>
     </div>
     <teleport to="body">
         <div v-if="loading" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 p-4 md:inset-0 h-modal md:h-full">
@@ -72,12 +73,18 @@ import axios from 'axios'
 import { ref } from "vue";
 import VueLoading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
-const kanji=ref('日本［東京］　花子')
-const kana=ref('トウキョウ　ハナコ')
-const apikey=ref("uHsoQnx7E823F24qk6V63SIWHwmVMG2s")
-const apiurl=ref("https://api.trueno-kktg.digital.go.jp/v1/")
+let default_apikey=(<HTMLInputElement>document.getElementById("default_api_key")).value;
+let default_apiurl=(<HTMLInputElement>document.getElementById("default_api_url")).value;
+let default_kanji=(<HTMLInputElement>document.getElementById("default_kanji")).value
+let default_kana=(<HTMLInputElement>document.getElementById("default_kana")).value;
+const kanji=ref(default_kanji)
+const kana=ref(default_kana)
+
+const apikey=ref(default_apikey)
+const apiurl=ref(default_apiurl)
 const detail=ref(true)
 const result=ref('')
+const response=ref('')
 const loading=ref(false)
 
 const calc=()=>{
@@ -95,9 +102,26 @@ const calc=()=>{
     console.log(query)
 
     loading.value=true
-    axios.get(query).then(response =>{
-        console.log(response)
-        result.value=response.data
+    axios.get(query).then(res =>{
+        console.log(res)
+        let r=res.data;
+        if(r.response=="OK"){
+            if(r.result.status>=90){
+                result.value='漢字とカナはほぼ確実に一致しています。'
+            }else if(r.result.status>=80){
+                result.value='漢字とカナは高い確率で一致しています。'
+            }else if(r.result.status>=70){
+                result.value='漢字とカナは多分一致しています'
+            }else if(r.result.status>=30){
+                result.value='漢字とカナは一致していないかもしれません'
+            }else{
+                result.value='漢字とカナはほぼ確実に一致していません'
+            }
+        }else{
+            result.value='ネットワークエラー'
+        }
+        response.value=r
+        
         loading.value=false
     })
     .catch(error=>{
