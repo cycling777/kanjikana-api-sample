@@ -16,7 +16,7 @@ curl --get --data-urlencode "kanji=日本　太郎" --data-urlencode "kana=ニ�
     "result": {
         "status": 90
     },
-    "version": "1.2o"
+    "version": "1.6o"
 }
 ```
 
@@ -35,7 +35,7 @@ curl --get --data-urlencode "kanji=日本　太郎" --data-urlencode "kana=ジ�
     "result": {
         "status": 0
     },
-    "version": "1.2o"
+    "version": "1.6o"
 }
 ```
 
@@ -43,7 +43,7 @@ curl --get --data-urlencode "kanji=日本　太郎" --data-urlencode "kana=ジ�
 
 ## APIキーの取得
 
-https://trueno-kktg.digital.go.jp/ から、[ログイン]ボタンを押して、ユーザー登録を行ってください。
+https://kktg.digital.go.jp/ から、[ログイン]ボタンを押して、ユーザー登録を行ってください。
 
 ![login page](./images/registration/new-user.png)
 
