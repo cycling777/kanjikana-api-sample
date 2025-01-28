@@ -7,11 +7,11 @@ import requests
 
 version = "v1"
 method = "simple" # or detail
-kanji="日本　太郎"
-kana="ニホン　タロウ"
-key="(api key)"
+kanji="日本［東京］　花子"
+kana="トウキョウ　ハナコ"
+key="REPLACE_WITH_YOUR_API_KEY"
 
-url = f"https://api.trueno-kktg.digital.go.jp/{version}/{method}"
+url = f"https://api.kktg.digital.go.jp/{version}/{method}"
 
 params = {
   'kanji': kanji,

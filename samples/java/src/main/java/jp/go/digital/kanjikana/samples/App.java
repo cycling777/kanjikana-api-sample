@@ -41,12 +41,12 @@ public class App
 {
     public static void main( String[] args )throws ArgumentParserException, IOException
     {
-        ArgumentParser parser = ArgumentParsers.newFor("kanjikana").build().defaultHelp(true).description("漢字カナ突合");
+        ArgumentParser parser = ArgumentParsers.newFor("kanjikana").build().defaultHelp(true).description("氏名突合");
 
-        parser.addArgument("--apikey").help("漢字カナ突合APIに登録して得たAPIキー");
-        parser.addArgument("--kanji").setDefault("日本［東京］　花子").help("漢字姓名。［］内は旧姓");
-        parser.addArgument("--kana").setDefault("トウキョウ　ハナコ").help("カタカナ姓名");
-        parser.addArgument("--method").setDefault("simple").choices(Arrays.asList("simple","detail")).help("simpleは簡易モデル，detailは詳細モデル");
+        parser.addArgument("--apikey").help("https://kktg.digital.go.jp で取得した API キー");
+        parser.addArgument("--kanji").setDefault("日本［東京］　花子").help("漢字氏名、［］内は旧氏");
+        parser.addArgument("--kana").setDefault("トウキョウ　ハナコ").help("カナ氏名");
+        parser.addArgument("--method").setDefault("simple").choices(Arrays.asList("simple", "detail")).help("simpleは簡易モデル、detailは詳細モデル");
 
         Namespace ns = parser.parseArgs(args);
 
@@ -55,8 +55,7 @@ public class App
         String kana = ns.getString("kana");
         String method = ns.getString("method");
 
-
-        URL url = new URL("https://api.trueno-kktg.digital.go.jp/v1/"+method+"&kanji="+kanji+"&kana="+kana+"&key="+apikey);
+        URL url = new URL("https://api.kktg.digital.go.jp/v1/"+method+"&kanji="+kanji+"&kana="+kana+"&key="+apikey);
 
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestProperty("accept", "application/json");
