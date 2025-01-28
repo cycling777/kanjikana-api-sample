@@ -1,8 +1,8 @@
-# 漢字かな突合システム (Node.js サンプルコード)
+# 氏名突合支援 API (Node.js サンプルコード)
 
-## APIキーの取得
+## API キーの取得
 
-事前に https://trueno-kktg.digital.go.jp/ から、APIキーを取得してください
+事前に https://kktg.digital.go.jp/ から、API キーを取得してください
 
 ## 使い方
 

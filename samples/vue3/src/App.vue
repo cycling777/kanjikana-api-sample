@@ -1,16 +1,14 @@
 <!--
- Copyright (c) 2024 デジタル庁
+  Copyright (c) 2024 デジタル庁
  
- This software is released under the MIT License.
- https://opensource.org/licenses/MIT
+  This software is released under the MIT License.
+  https://opensource.org/licenses/MIT
 -->
 
 <template>
-  <KanjiKana />
+  <kanjikana />
 </template>
 
-
 <script setup lang="ts">
-import KanjiKana from './components/KanjiKana.vue'
+import kanjikana from "./components/kanjikana.vue";
 </script>
-

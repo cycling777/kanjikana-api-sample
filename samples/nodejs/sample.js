@@ -1,36 +1,34 @@
 // Copyright (c) 2024 デジタル庁
-// 
+//
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import https from 'https';
+import https from "https";
 
 (async () => {
+  const method = "simple"; // or detail
+  const version = "v1";
 
-  const method = 'simple'; // or detail
-  const version = 'v1';
-
-  const url = new URL(`https://api.trueno-kktg.digital.go.jp/${version}/${method}`);
+  const url = new URL(`https://api.kktg.digital.go.jp/${version}/${method}`);
   url.search = new URLSearchParams({
-    'kanji': '日本　太郎',
-    'kana': 'にほん たろう',
-    'key': '(api key)',
+    kanji: "日本［東京］　花子",
+    kana: "トウキョウ　ハナコ",
+    key: "REPLACE_WITH_YOUR_API_KEY",
   });
 
-  const response = await (new Promise((resolve) => {
+  const response = await new Promise((resolve) => {
     https.get(url, (response) => {
       const buffer = [];
-      response.on('data', chunk => buffer.push(chunk));
-      response.once('end', () => {
+      response.on("data", (chunk) => buffer.push(chunk));
+      response.once("end", () => {
         resolve({
           statusCode: response.statusCode,
-          body: buffer.join(''),
-        })
-      })
+          body: buffer.join(""),
+        });
+      });
     });
-  }));
+  });
 
   // レスポンスの表示
   console.log(response);
-
 })();
