@@ -1,12 +1,15 @@
-# 漢字かな突合システム(vue3 サンプルコード)
+# 氏名突合支援 API (Vue.js 3 サンプルコード)
+
 ## 概要
-Vue３＋axiosで漢字カナ突合APIにアクセスし，結果を取得するプログラムです。Webアプリとして作成したい場合のサンプルです。
 
-## APIキーの取得
+Vue.js 3 ＋ Axios で氏名突合支援 API にアクセスし，結果を取得するプログラムです。Web アプリとして作成したい場合のサンプルです。
 
-事前に https://trueno-kktg.digital.go.jp/ から、APIキーを取得してください
+## API キーの取得
+
+事前に https://kktg.digital.go.jp/ から、API キーを取得してください
 
 ## 使い方
+
 ```
 npm i
 npm run build
@@ -14,6 +17,6 @@ cd dist
 python -m http.server
 ```
 
-## ブラウザ    
-ブラウザで http://localhost:8000 へアクセスし確認
+## ブラウザ
 
+ブラウザで http://localhost:8000 へアクセスし確認
