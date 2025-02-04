@@ -10,5 +10,5 @@
 </template>
 
 <script setup lang="ts">
-import kanjikana from "./components/kanjikana.vue";
+import kanjikana from "./components/Matching.vue";
 </script>
