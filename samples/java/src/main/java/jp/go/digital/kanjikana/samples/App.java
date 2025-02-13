@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Arrays;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,21 +42,23 @@ public class App
 {
     public static void main( String[] args )throws ArgumentParserException, IOException
     {
-        ArgumentParser parser = ArgumentParsers.newFor("kanjikana").build().defaultHelp(true).description("氏名突合");
+        ArgumentParser parser = ArgumentParsers.newFor("kanjikana").build().defaultHelp(true).description("氏名漢字カナ突合APIサンプル");
 
         parser.addArgument("--apikey").help("https://kktg.digital.go.jp で取得した API キー");
         parser.addArgument("--kanji").setDefault("日本［東京］　花子").help("漢字氏名、［］内は旧氏");
         parser.addArgument("--kana").setDefault("トウキョウ　ハナコ").help("カナ氏名");
+        parser.addArgument("--url").setDefault("https://api.kktg.digital.go.jp/v1/").help("氏名漢字カナ突合APIのURL");
         parser.addArgument("--method").setDefault("simple").choices(Arrays.asList("simple", "detail")).help("simpleは簡易モデル、detailは詳細モデル");
 
         Namespace ns = parser.parseArgs(args);
 
         String apikey = ns.getString("apikey");
-        String kanji = ns.getString("kanji");
-        String kana = ns.getString("kana");
+        String kanji = URLEncoder.encode(ns.getString("kanji"),"UTF-8");
+        String kana =  URLEncoder.encode(ns.getString("kana"),"UTF-8");
         String method = ns.getString("method");
+        String apiurl = ns.getString("url");
 
-        URL url = new URL("https://api.kktg.digital.go.jp/v1/"+method+"&kanji="+kanji+"&kana="+kana+"&key="+apikey);
+        URL url = new URL(apiurl+method+"?kanji="+kanji+"&kana="+kana+"&key="+apikey);
 
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestProperty("accept", "application/json");
@@ -64,7 +67,8 @@ public class App
         ObjectMapper mapper = new ObjectMapper();
         Response response = mapper.readValue(responseStream, Response.class);
 
-        System.out.println(response.result.status);
+        //System.out.println(response.result.status);
+        System.out.println(response);
 
     }
 }

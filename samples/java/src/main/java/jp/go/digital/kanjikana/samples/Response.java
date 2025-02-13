@@ -44,4 +44,9 @@ public class Response {
         this.version = version;
         this.result = result;
     }
+
+    @Override
+    public String toString(){
+        return "{\n    \"response\":"+"\""+this.response+"\",\n    \"result\":{\n        \"status\":"+this.result.status+"\n    },\n   \"version\":\""+this.version+"\" \n}";
+    }
 }
