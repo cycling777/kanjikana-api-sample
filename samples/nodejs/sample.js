@@ -1,5 +1,6 @@
-// Copyright (c) 2024 デジタル庁
-//
+
+// Copyright (c) 2025 デジタル庁
+// 
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
@@ -32,3 +33,4 @@ import https from "https";
   // レスポンスの表示
   console.log(response);
 })();
+
