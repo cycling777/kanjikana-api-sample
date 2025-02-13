@@ -49,3 +49,4 @@ public class Response {
     public String toString(){
         return "{\n    \"response\":"+"\""+this.response+"\",\n    \"result\":{\n        \"status\":"+this.result.status+"\n    },\n   \"version\":\""+this.version+"\" \n}";
     }
+}
