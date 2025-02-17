@@ -1,10 +1,10 @@
-# 氏名突合支援サービス
+# 氏名突合支援サービス API利用サンプル
 
-## 説明
+## 概要
 
-入力された名前の漢字文字列と読み仮名（フリガナ）であるカタカナ文字列を、デジタル庁が用意した名前突合システムの辞書データと突合し、読み仮名（フリガナ）が正しいかどうかを統計的に判断します。
+デジタル庁が提供する氏名突合支援サービスの API 利用時のサンプルコードを提供しています。
 
-モデルの詳細については[氏名漢字カナ突合システムサポートサイト](https://kktg.digital.go.jp/support/index.html)を参照のこと。
+API 仕様の詳細については[サポートサイト](https://kktg.digital.go.jp/support/index.html)を参照ください。
 
 
 ## 出力
@@ -83,4 +83,4 @@ curl --get --data-urlencode "kanji=日本　太郎" --data-urlencode "kana=ジ�
 - [Node.js](./samples/nodejs/)
 - [Python](./samples/python3/)
 - [Vue.js](./samples/vue3/)
-- [excel](./samples/excel/)
+- [Excel](./samples/excel/)
