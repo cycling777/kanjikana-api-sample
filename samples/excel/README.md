@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/3792c75f-3bd8-4179-8251-61885ad1d244)# 氏名突合支援 API (Excel サンプルコード)
+# 氏名突合支援 API (Excel サンプルコード)
 
 ## 概要
 
