@@ -12,8 +12,15 @@ Excel VBA を用いた独自関数（NameMatch、PredictKanji、PredictKana）�
 
 ### API キーの取得
 
-1. [氏名突合支援サービスサポートサイト](https://kktg.digital.go.jp/) より API キー取得してください。
-2. 取得したAPIキーを「設定」シートの「APIキー」の "REPLACE_WITH_YOUR_API_KEY"（B2セル）を置き換える形で入力してください。
+1. [氏名突合支援サービスサポートサイト](https://kktg.digital.go.jp/) より API キー（32文字の英数字列）取得してください。
+2. 取得した API キーを `設定` シートの `APIキー` 内にB2セルの `REPLACE_WITH_YOUR_API_KEY` を置き換える形で入力してください。
+
+### （オプション）独自 Excel ファイルへの組み込み
+
+1. [VBA-JSON](https://github.com/VBA-tools/VBA-JSON)（対象ファイル: `JsonConverter.bas`）及び [VBA-Dictionary](https://github.com/VBA-tools/VBA-Dictionary)（対象ファイル: `Dictionary.cls`）をダウンロードしてください。
+2. ダウンロードした [kanjikana.xlsm](./kanjikana.xlsm) から標準モジュール `KanjiKanaNameMatch` をエクスポート（既定ファイル名: `KanjiKanaNameMatch.bas`）してください。
+3. 独自 Excel ファイル（マクロ有効ブック形式 `*.xlsm`）に対し、標準モジュールに `JsonConverter.bas` と `KanjiKanaNameMatch.bas` を、クラスモジュールに `Dictionary.cls` をインポートしてください。
+4. 標準モジュール `KanjiKanaNameMatch` 内の `strApiKey = "REPLACE_WITH_YOUR_API_KEY"` の `REPLACE_WITH_YOUR_API_KEY` を取得した API キーで置き換えてください。
 
 ## 使い方
 
@@ -30,13 +37,13 @@ NameMatch(漢字氏名, カナ氏名, [詳細モデル利用フラグ])
 | カナ氏名 | 突合したい氏名のカナ |
 | 詳細モデル利用フラグ | TRUE = 詳細モデル / FALSE = 簡易モデル (既定値: FALSE)  |
 
-#### 例
-セルA2に漢字氏名、セルB2にカナ氏名、簡易モデルで突合する
+#### 関数の利用例
+セルA2に漢字氏名、セルB2にカナ氏名が入力されている状況で、簡易モデルで突合する
 ```
 =NameMatch(A2, B2)
 ```
 
-セルA2に漢字氏名、セルB2にカナ氏名、詳細モデルで突合する
+セルA2に漢字氏名、セルB2にカナ氏名が入力されている状況で、詳細モデルで突合する
 ```
 =NameMatch(A2, B2, TRUE)
 ```
@@ -54,18 +61,18 @@ PredictKanji(カナ氏名, [返却最大数])    // カナ → 漢字
 | カナ氏名 | 突合したい氏名のカナ |
 | 返却最大数 | 1～10の値 (既定値: 1)  |
 
-#### 例
-セルA2に漢字氏名、カナ氏名を推定する
+#### 関数の利用例
+セルA2に漢字氏名が入力されている状況で、カナ氏名を推定する
 ```
 =PredictKana(A2)
 ```
 
-セルB2にカナ氏名、漢字氏名を上位2候補推定する
+セルB2にカナ氏名が入力されている状況で、漢字氏名を上位2候補推定する
 ```
 =PredictKanji(B2, 5)
 ```
 
 ## 制限事項
-- インターネット接続 (api.kktg.digital.go.jp への HTTPS 通信) が必要です。
+- インターネット接続（api.kktg.digital.go.jp への HTTPS 通信）が必要です。
 - Windows 11 + Microsoft Office (Excel for Microsoft 365, Version 2408) 環境で動作確認しています。
-- Mac (macOS) では動作しません。
+- 現時点で Mac (macOS) での動作はしません。
