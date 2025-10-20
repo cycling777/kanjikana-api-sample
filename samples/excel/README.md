@@ -89,5 +89,5 @@ PredictKanji(カナ氏名, [返却最大数])    // カナ → 漢字
 
 ## 制限事項
 - インターネット接続（api.kktg.digital.go.jp への HTTPS 通信）が必要です。
-- Windows 11 + Microsoft Office (Excel for Microsoft 365, Version 2408) 環境で動作確認しています。
+- Windows 11 + Microsoft Office (Excel for Microsoft 365, Version 2508) 環境で動作確認しています。
 - 現時点で Mac (macOS) での動作はしません。
