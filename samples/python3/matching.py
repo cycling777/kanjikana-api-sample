@@ -27,3 +27,4 @@ print(response.status_code)  # 200
 
 # レスポンスのコンテンツを表示
 print(response.text)
+
